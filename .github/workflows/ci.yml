@@ -19,20 +19,17 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: |
-          cd frontend
-          npm install
+      - name: Install dependencies (frontend)
+        working-directory: ./frontend
+        run: npm install
 
       - name: Run tests
-        run: |
-          cd frontend
-          npm test
+        working-directory: ./frontend
+        run: npm test
 
       - name: Generate coverage
-        run: |
-          cd frontend
-          npm test -- --coverage
+        working-directory: ./frontend
+        run: npm test -- --coverage
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v3
